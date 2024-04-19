@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.example.nutrifit.ui.components.PruebasOrigen
+import com.example.nutrifit.ui.components.MainBottomBar
 import com.example.nutrifit.ui.navigation.NavGraph
 import com.example.nutrifit.ui.theme.NutriFitTheme
 
@@ -20,18 +20,17 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NutriFitTheme {
-                // A surface container using the 'background' color from the theme
                 val navController = rememberNavController()
+
                 Surface(
                     modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
                 ) {
-                    Scaffold(bottomBar = { PruebasOrigen(navController) }
+                    Scaffold(bottomBar = { MainBottomBar(navController) }
                     ) {
                         NavGraph(navController)
                     }
                 }
             }
-
         }
     }
 }

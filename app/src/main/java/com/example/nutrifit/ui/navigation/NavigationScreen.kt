@@ -1,6 +1,6 @@
 package com.example.nutrifit.ui.navigation
 
 sealed class NavigationScreen(val route: String) {
-    object HomeScreen :NavigationScreen ("Home")
-    object ObjetivesScreen :NavigationScreen ("Objetives")
+    data object PlanScreen : NavigationScreen("Plan")
+    data object LoginScreen : NavigationScreen("Login")
 }

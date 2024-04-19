@@ -1,4 +1,4 @@
-package com.example.nutrifit.ui.screens.plan
+package com.example.nutrifit.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -20,7 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.nutrifit.ui.components.ScreenWithBottomBar
+
 
 // Define los niveles de actividad física como una enumeración o lista de datos
 val activityLevels = listOf(
@@ -35,16 +35,10 @@ val activityLevels = listOf(
 fun PlanScreen() {
     var selectedActivityLevel by remember { mutableStateOf<String?>(null) }
 
-    ScreenWithBottomBar(
-        selectedItem = 0, // El índice para "Plan"
-        onItemSelected = { index ->
-            // TODO: Implementar la lógica de navegación aquí
-        }
-    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
+                .padding(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -63,7 +57,6 @@ fun PlanScreen() {
             }
         }
     }
-}
 
 @Composable
 fun ActivityLevelItem(level: String, selected: Boolean, onSelect: () -> Unit) {

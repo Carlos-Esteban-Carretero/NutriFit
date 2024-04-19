@@ -1,4 +1,4 @@
-package com.example.nutrifit.ui.screens.plan
+package com.example.nutrifit.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,55 +26,59 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.nutrifit.R
-import com.example.nutrifit.ui.components.ScreenWithBottomBar
 
 // Asumiendo que los identificadores de los drawables son correctos y corresponden a los nombres de archivos.
 val objectives = listOf(
-    ObjectiveItem("Perder Grasa", "Maximiza la pérdida de grasa y conserva tu masa muscular", R.drawable.ic_perder_peso),
-    ObjectiveItem("Mantener Peso", "Conserva tu estado físico y mantente saludable", R.drawable.ic_mantener_peso),
-    ObjectiveItem("Ganar Músculo", "Incrementa tu masa muscular y vuélvete más fuerte", R.drawable.ic_ganar_musculo),
+    ObjectiveItem(
+        "Perder Grasa",
+        "Maximiza la pérdida de grasa y conserva tu masa muscular",
+        R.drawable.ic_perder_peso
+    ),
+    ObjectiveItem(
+        "Mantener Peso",
+        "Conserva tu estado físico y mantente saludable",
+        R.drawable.ic_mantener_peso
+    ),
+    ObjectiveItem(
+        "Ganar Músculo",
+        "Incrementa tu masa muscular y vuélvete más fuerte",
+        R.drawable.ic_ganar_musculo
+    ),
 )
 
 data class ObjectiveItem(val title: String, val description: String, val iconId: Int)
 
 @Composable
 fun ScreenPlan2() {
-    ScreenWithBottomBar(
-        selectedItem = 0, // Asegúrate de que este índice corresponda con la pestaña 'Plan'.
-        onItemSelected = { index ->
-            // Acción cuando se selecciona un ítem
-        }
-    ) { innerPadding ->
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(10.dp)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_cual_es_tu_objetivo),
+            contentDescription = "Background",
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop
+        )
+        // Fondo oscuro para mejorar el contraste
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_cual_es_tu_objetivo),
-                contentDescription = "Background",
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-            // Fondo oscuro para mejorar el contraste
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(
-                        Brush.verticalGradient(
-                            colors = listOf(Color.Black.copy(alpha = 0.7f), Color.Transparent),
-                            startY = 300f // Puedes ajustar este valor según tus necesidades
-                        )
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(Color.Black.copy(alpha = 0.7f), Color.Transparent),
+                        startY = 300f // Puedes ajustar este valor según tus necesidades
                     )
-            )
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .align(Alignment.TopStart)
-            ) {
-                objectives.forEach { objective ->
-                    ObjectiveOption(objective)
-                }
+                )
+        )
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .align(Alignment.TopStart)
+        ) {
+            objectives.forEach { objective ->
+                ObjectiveOption(objective)
             }
         }
     }

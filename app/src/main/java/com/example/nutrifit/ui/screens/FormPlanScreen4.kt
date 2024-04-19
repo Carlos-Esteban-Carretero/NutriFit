@@ -1,9 +1,8 @@
-package com.example.nutrifit.ui.screens.recetas
+package com.example.nutrifit.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,22 +30,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.nutrifit.R
-import com.example.nutrifit.ui.components.ScreenWithBottomBar
 
 @Composable
-fun ScreenRecetas1() {
-    ScreenWithBottomBar(
-        selectedItem = 1, // Asumiendo que 'Recetas' es el índice 1 en la barra de navegación
-        onItemSelected = { index ->
-            // Acciones para cambiar de pantalla según la pestaña seleccionada
-        }
-    ) { innerPadding ->
-        MainContent(innerPadding)
-    }
-}
-
-@Composable
-fun MainContent(paddingValues: PaddingValues) {
+fun MainContent() {
     var intolerancia by remember { mutableStateOf(false) }
     var detallesIntolerancia by remember { mutableStateOf("") }
     var dietaSeleccionada by remember { mutableStateOf("") }
@@ -55,8 +41,7 @@ fun MainContent(paddingValues: PaddingValues) {
 
     Column(
         modifier = Modifier
-            .padding(paddingValues)
-            .padding(15.dp)
+            .padding(5.dp)
             .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -167,6 +152,6 @@ fun DietasOptions(dietas: List<String>, selectedDieta: String, onDietaSelected: 
 @Preview
 @Composable
 fun PreviewScreenRecetas1() {
-    ScreenRecetas1()
+    MainContent()
 }
 

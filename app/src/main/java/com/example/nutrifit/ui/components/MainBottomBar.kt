@@ -20,14 +20,16 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.nutrifit.ui.screens.ObjectivesUserScreen
+import androidx.navigation.NavHostController
+import com.example.nutrifit.ui.navigation.NavigationScreen
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-fun Pruebas() {
+fun PruebasOrigen(
+    navHostController: NavHostController
+) {
     var selectedButton by remember { mutableIntStateOf(0) }
-    val buttons = getNavigationButtons()
+    val buttons = getNavigationButtonsOrigen()
 
     NavigationBar {
         buttons.forEachIndexed { index, button ->
@@ -36,6 +38,7 @@ fun Pruebas() {
                 selected = selectedButton == index,
                 onClick = {
                     selectedButton = index
+                    navHostController.navigate(button.screen)
                 },
                 icon = {
                     BadgedBox(
@@ -61,7 +64,7 @@ fun Pruebas() {
     }
 }
 
-data class NavigationButton(
+data class NavigationButtonOrigen(
     val title: String,
     val icon: ImageVector,
     val screen: String,
@@ -69,43 +72,38 @@ data class NavigationButton(
     val badgeCount: Int? = null
 )
 
-fun getNavigationButtons(): List<NavigationButton> {
+fun getNavigationButtonsOrigen(): List<NavigationButtonOrigen> {
     return listOf(
-        NavigationButton(
+        NavigationButtonOrigen(
             title = "Home",
             icon = Icons.Rounded.Home,
-            screen = "Home",
+            screen = NavigationScreen.ObjetivesScreen.route,
             hasNews = false
         ),
-        NavigationButton(
+        NavigationButtonOrigen(
             title = "Games",
             icon = Icons.Rounded.Games,
-            screen = "Games",
+            screen = NavigationScreen.HomeScreen.route,
             hasNews = false
         ),
-        NavigationButton(
+        NavigationButtonOrigen(
             title = "Favorites",
             icon = Icons.Rounded.Favorite,
-            screen = "Favorites",
+            screen = NavigationScreen.HomeScreen.route,
             hasNews = false
         ),
-        NavigationButton(
+        NavigationButtonOrigen(
             title = "News",
             icon = Icons.Rounded.Message,
-            screen = "News",
+            screen = NavigationScreen.ObjetivesScreen.route,
             hasNews = true,
             badgeCount = 2
         ),
-        NavigationButton(
+        NavigationButtonOrigen(
             title = "Profile",
             icon = Icons.Rounded.Person,
-            screen ="Profile",
+            screen = NavigationScreen.HomeScreen.route,
             hasNews = false
         )
     )
-}
-@Preview(showBackground = true)
-@Composable
-fun PreviewObjectivesUserScreen() {
-    ObjectivesUserScreen()
 }

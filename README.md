@@ -22,5 +22,5 @@ Este es un proyecto de una aplicación Android desarrollada en Kotlin y Jetpack 
 
 ## 🔗 Referencias
 [![Jetpack Compose](https://img.shields.io/badge/jetpack_compose-d2e3fc?style=for-the-badge&logo=jetpackcompose&logoColor=green&labelColor=002b41)](https://developer.android.com/develop/ui/compose)
-[![Kotlin](https://img.shields.io/badge/kotlin-303033?style=for-the-badge&logo=kotlin&logoColor=ac2ff5&labelColor=19191c)](https://www.jenkins.io/doc/book/pipeline/shared-libraries/)
+[![Kotlin](https://img.shields.io/badge/kotlin-303033?style=for-the-badge&logo=kotlin&logoColor=ac2ff5&labelColor=19191c)](https://kotlinlang.org/)
 

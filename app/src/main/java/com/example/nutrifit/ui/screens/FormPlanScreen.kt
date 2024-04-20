@@ -251,7 +251,7 @@ fun calculateBMI(age: String, height: String, weight: String, bmi: String, bmiCa
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewBMICalculatorScreen() {
+fun FormPlanScreen3Preview() {
     FormPlanScreen3()
 }
 

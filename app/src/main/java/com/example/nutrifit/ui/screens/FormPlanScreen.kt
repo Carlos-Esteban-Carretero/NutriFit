@@ -1,20 +1,36 @@
 package com.example.nutrifit.ui.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -33,37 +49,20 @@ fun FormPlanScreen() {
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
 
-    // Cargar la imagen de fondo
-    val backgroundImage: Painter = painterResource(id = R.drawable.imagen_bg_calculadora_imc)
-
-    // Primer plano semitransparente verde
-    val greenSemiTransparent = Brush.verticalGradient(
-        colors = listOf(
-            Color(0xCC388E3C),
-            Color(0xCC81C784),
-            Color(0xCCA5D6A7),
-            Color(0xCC4CAF50)
-        )
-    )
-
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF388E3C), // Verde oscuro
+                        Color(0xFF81C784), // Verde claro
+                        Color(0xFFA5D6A7), // Verde aún más claro
+                        Color(0xFF4CAF50)  // Otro tono de verde
+                    )
+                )
+            )
     ) {
-        // Aplicar imagen de fondo
-        Image(
-            painter = backgroundImage,
-            contentDescription = null,
-            modifier = Modifier.matchParentSize(),
-            contentScale = ContentScale.Crop
-        )
-
-        // Aplicar degradado verde semitransparente
-        Box(
-            modifier = Modifier
-                .matchParentSize()
-                .background(greenSemiTransparent)
-        )
-
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -111,7 +110,7 @@ fun FormPlanScreen() {
             )
             Spacer(modifier = Modifier.height(32.dp))
             Button(
-                onClick = { /* Lógica de cálculo del IMC */ },
+                onClick = { /* Aquí iría la lógica para el cálculo del IMC */ },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp),
@@ -123,7 +122,9 @@ fun FormPlanScreen() {
                 Icon(
                     painter = painterResource(id = R.drawable.ic_calculadora_calcular),
                     contentDescription = "Calcular",
-                    modifier = Modifier.size(24.dp)
+                    modifier = Modifier.size(25.dp)
+
+
                 )
                 Spacer(Modifier.width(8.dp))
                 Text(
@@ -148,13 +149,13 @@ fun CustomOutlinedTextField(
 ) {
     OutlinedTextField(
         value = value,
-        onValueChange = onValueChange,
+        onValueChange = { newValue -> onValueChange(newValue) },
         singleLine = true,
         label = { Text(label) },
         leadingIcon = {
             Icon(
                 painter = painterResource(id = icon),
-                contentDescription = label,
+                contentDescription = label, // Usamos label como contentDescription
                 modifier = Modifier.size(24.dp)
             )
         },

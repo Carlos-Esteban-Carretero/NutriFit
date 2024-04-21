@@ -1,29 +1,29 @@
 package com.example.nutrifit.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.wear.compose.material.ContentAlpha
+import com.example.nutrifit.R
 import com.example.nutrifit.ui.components.GenderSelection
 
 @Composable
@@ -32,81 +32,143 @@ fun FormPlanScreen() {
     var age by remember { mutableStateOf("") }
     var height by remember { mutableStateOf("") }
     var weight by remember { mutableStateOf("") }
-    val bmi by remember { mutableStateOf("Calculando...") }
-    val bmiCategory by remember { mutableStateOf("Calculando...") }
-    val healthyWeightRange by remember { mutableStateOf("Calculando...") }
+
+    // Cargar la imagen de fondo
+    val backgroundImage: Painter = painterResource(id = R.drawable.imagen_bg_calculadora_imc)
+
+    // Primer plano semitransparente verde
+    val greenSemiTransparent = Brush.verticalGradient(
+        colors = listOf(
+            Color(0xCC388E3C),
+            Color(0xCC81C784),
+            Color(0xCCA5D6A7),
+            Color(0xCC4CAF50)
+        )
+    )
 
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color(0xFFA5D6A7)) // Un tono de verde claro, cambia el valor del color según tu preferencia
+        modifier = Modifier.fillMaxSize()
     ) {
+        // Aplicar imagen de fondo
+        Image(
+            painter = backgroundImage,
+            contentDescription = null,
+            modifier = Modifier.matchParentSize(),
+            contentScale = ContentScale.Crop
+        )
+
+        // Aplicar degradado verde semitransparente
+        Box(
+            modifier = Modifier
+                .matchParentSize()
+                .background(greenSemiTransparent)
+        )
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp),
+                .padding(16.dp)
+                .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text("Calculadora IMC", style = MaterialTheme.typography.headlineMedium)
-            Text("Selecione su sexo:", style = MaterialTheme.typography.labelLarge)
-
-
-            GenderSelection(gender) { selectedGender ->
-                gender = selectedGender
-            }
-
-            Spacer(modifier = Modifier.height(18.dp))
-
-            OutlinedTextField(
+            Text(
+                "Calculadora IMC",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    fontFamily = FontFamily.SansSerif
+                )
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            Text(
+                "Seleccione su género:",
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontSize = 18.sp,
+                    fontFamily = FontFamily.SansSerif
+                )
+            )
+            GenderSelection(gender, onGenderSelected = { gender = it })
+            CustomOutlinedTextField(
                 value = age,
                 onValueChange = { age = it },
-                label = { Text("Edad") },
-                modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                singleLine = true
+                label = "Edad",
+                icon = R.drawable.ic_edad,
+                keyboardType = KeyboardType.Number
             )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            OutlinedTextField(
+            CustomOutlinedTextField(
                 value = height,
                 onValueChange = { height = it },
-                label = { Text("Altura (cm)") },
-                modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                singleLine = true
+                label = "Altura (cm)",
+                icon = R.drawable.ic_altura,
+                keyboardType = KeyboardType.Number
             )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            OutlinedTextField(
+            CustomOutlinedTextField(
                 value = weight,
                 onValueChange = { weight = it },
-                label = { Text("Peso (kg)") },
-                modifier = Modifier.fillMaxWidth(),
-                keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                singleLine = true
+                label = "Peso (kg)",
+                icon = R.drawable.ic_peso,
+                keyboardType = KeyboardType.Number
             )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Resultados del BMI
-            Text("Índice De Masa Corporal: $bmi kg/m²")
-            Text("Categoría: $bmiCategory")
-            Text("Rango de Peso Saludable: $healthyWeightRange")
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Botón de cálculo
+            Spacer(modifier = Modifier.height(32.dp))
             Button(
-                onClick = { calculateBMI(age, height, weight, bmi, bmiCategory, healthyWeightRange) },
-                modifier = Modifier.fillMaxWidth()
+                onClick = { /* Lógica de cálculo del IMC */ },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                shape = RoundedCornerShape(50),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary
+                )
             ) {
-                Text("Calcular")
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_calculadora_calcular),
+                    contentDescription = "Calcular",
+                    modifier = Modifier.size(24.dp)
+                )
+                Spacer(Modifier.width(8.dp))
+                Text(
+                    "Calcular",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                )
             }
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CustomOutlinedTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    icon: Int,
+    keyboardType: KeyboardType
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = onValueChange,
+        singleLine = true,
+        label = { Text(label) },
+        leadingIcon = {
+            Icon(
+                painter = painterResource(id = icon),
+                contentDescription = label,
+                modifier = Modifier.size(24.dp)
+            )
+        },
+        colors = TextFieldDefaults.outlinedTextFieldColors(
+            containerColor = Color.Transparent,
+            focusedBorderColor = MaterialTheme.colorScheme.primary,
+            unfocusedBorderColor = MaterialTheme.colorScheme.onSurface.copy(alpha = ContentAlpha.medium)
+        ),
+        shape = RoundedCornerShape(50.dp),
+        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = keyboardType),
+        modifier = Modifier.fillMaxWidth()
+    )
+}
+
 @Preview(showBackground = true)
 @Composable
 fun FormPlanScreenPreview() {

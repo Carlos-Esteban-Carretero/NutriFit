@@ -1,9 +1,19 @@
 package com.example.nutrifit.ui.screens
 
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.*
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -72,11 +82,11 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
             .padding(vertical = 8.dp),
     ) {
         Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
-            // Aquí se quita cualquier modificador de color para mantener el color original del ícono
             Icon(
                 painter = painterResource(id = iconId),
                 contentDescription = "$mealType icon",
-                modifier = Modifier.size(60.dp)
+                modifier = Modifier.size(60.dp),
+                tint = Color.Unspecified  // Para mantener los colores originales del SVG
             )
             Spacer(Modifier.width(8.dp))
             Column {
@@ -108,6 +118,7 @@ private val sampleMeals = DayMealPlan(
         protein = 14,
         fat = 15,
         carbs = 15
+
     ),
     lunch = Meal(
         name = "Ensalada mixta",

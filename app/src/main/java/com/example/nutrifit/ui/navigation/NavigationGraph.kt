@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.nutrifit.ui.screens.LoginScreen
 import com.example.nutrifit.ui.screens.PlanScreen
+import com.example.nutrifit.ui.screens.RecipesScreen
+import com.example.nutrifit.ui.screens.sampleMeals
 
 
 @Composable
@@ -17,6 +19,9 @@ fun NavGraph(pepe: NavHostController) {
         }
         composable(NavigationScreen.LoginScreen.route) {
             LoginScreen()
+        }
+        composable(NavigationScreen.RecipesScreen.route) {
+            RecipesScreen(listOf(sampleMeals))
         }
     }
 }

@@ -144,7 +144,7 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
 
 //hola
 // Dummy data for the preview
-private val sampleMeals = DayMealPlan(
+val sampleMeals = DayMealPlan(
     dayOfWeek = "Lunes",
     breakfast = Meal(
         name = "Tortilla española",

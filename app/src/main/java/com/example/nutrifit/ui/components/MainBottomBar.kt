@@ -92,17 +92,12 @@ fun getNavigationButtons(): List<NavigationButton> {
         ), NavigationButton(
             title = "Recipes",
             icon = Icons.Rounded.Kitchen,
-            screen = NavigationScreen.LoginScreen.route,
+            screen = NavigationScreen.RecipesScreen.route,
             hasNews = false
         ), NavigationButton(
             title = "Tips",
             icon = Icons.Rounded.LightbulbCircle,
             screen = NavigationScreen.PlanScreen.route,
-            hasNews = false
-        ), NavigationButton(
-            title = "News",
-            icon = Icons.Rounded.Message,
-            screen = NavigationScreen.LoginScreen.route,
             hasNews = true,
             badgeCount = 2
         ), NavigationButton(

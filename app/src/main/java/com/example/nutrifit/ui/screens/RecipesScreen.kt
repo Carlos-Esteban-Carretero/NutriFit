@@ -1,9 +1,11 @@
 package com.example.nutrifit.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -15,7 +17,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
@@ -81,39 +82,73 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
             .fillMaxWidth()
             .padding(vertical = 8.dp),
     ) {
-        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+        Column(modifier = Modifier.padding(16.dp)) {
             Icon(
                 painter = painterResource(id = iconId),
                 contentDescription = "$mealType icon",
                 modifier = Modifier.size(60.dp),
-                tint = Color.Unspecified  // Para mantener los colores originales del SVG
+                tint = Color.Unspecified // Para mantener los colores originales del SVG
             )
             Spacer(Modifier.width(8.dp))
-            Column {
-                Text(
-                    text = "$mealType: ${meal.name}",
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
+            Text(
+                text = "$mealType: ${meal.name}",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+            Text(
+                text = meal.description,
+                style = MaterialTheme.typography.bodyLarge
+            )
+            Spacer(Modifier.height(8.dp)) // Espacio adicional antes de los macros
+            Text(
+                text = "Calorías: ${meal.calories} kcal",
+                fontWeight = FontWeight.Bold, // Hace que el texto sea negrita
+                color = MaterialTheme.colorScheme.primary // Cambia el color para resaltar
+            )
+            Spacer(Modifier.height(4.dp)) // Espacio entre las líneas de texto
+            Text(
+                text = "Proteínas: ${meal.protein}g",
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = "Grasas: ${meal.fat}g",
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Spacer(Modifier.height(4.dp))
+            Text(
+                text = "Carbohidratos: ${meal.carbs}g",
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            )
+            Spacer(Modifier.height(16.dp)) // Espacio adicional antes de la imagen
+
+            // Solo mostrar la imagen para el desayuno
+            if (mealType == "Desayuno") {
+                Image(
+                    painter = painterResource(id = R.drawable.tortilladepatatas),
+                    contentDescription = "Imagen de ${meal.name}",
+                    modifier = Modifier
+                        .fillMaxWidth() // Ocupa el ancho máximo disponible
+                        .aspectRatio(4f / 3f) // Mantiene la relación de aspecto
+                        .padding(top = 8.dp) // Espacio adicional en la parte superior de la imagen
                 )
-                Text(
-                    text = meal.description,
-                    style = MaterialTheme.typography.bodyLarge
-                )
-                Text(text = "Calorías: ${meal.calories} kcal")
-                Text(text = "Proteínas: ${meal.protein}g")
-                Text(text = "Grasas: ${meal.fat}g")
-                Text(text = "Carbohidratos: ${meal.carbs}g")
             }
         }
     }
 }
+
+
+
 
 // Dummy data for the preview
 private val sampleMeals = DayMealPlan(
     dayOfWeek = "Lunes",
     breakfast = Meal(
         name = "Tortilla española",
-        description = "Con 2 huevos, 50 g de patata y 30 g de cebolla",
+        description = "Tortilla española con 2 huevos, 50 g de patata y 30 g de cebolla.",
         calories = 250,
         protein = 14,
         fat = 15,

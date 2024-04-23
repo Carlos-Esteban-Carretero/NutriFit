@@ -5,11 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.nutrifit.ui.screens.DayMealPlan
 import com.example.nutrifit.ui.screens.LoginScreen
 import com.example.nutrifit.ui.screens.PlanScreen
 import com.example.nutrifit.ui.screens.RecipesScreen
-import com.example.nutrifit.ui.screens.sampleMeals
+import com.example.nutrifit.ui.screens.dayMealPlans
 
 
 @Composable
@@ -22,13 +21,9 @@ fun NavGraph(pepe: NavHostController) {
             LoginScreen()
         }
         composable(NavigationScreen.RecipesScreen.route) {
-            val listCosas : MutableList<DayMealPlan>  = mutableListOf()
 
-            repeat(3) {
-                listCosas.add(sampleMeals)
-            }
 
-            RecipesScreen(listCosas)
+            RecipesScreen(dayMealPlans)
         }
     }
 }

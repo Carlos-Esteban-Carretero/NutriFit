@@ -115,7 +115,7 @@ fun DayMealPlanCard(dayMealPlan: DayMealPlan) {
                 Text(
                     text = dayMealPlan.dayOfWeek,
                     style = MaterialTheme.typography.headlineMedium.copy(
-                        fontSize = 70.sp, fontWeight = FontWeight.Bold, color = Color.Black
+                        fontSize = 70.sp,  fontWeight = FontWeight.ExtraBold, color = Color.Black
                     ),
                     textAlign = TextAlign.Center,
                     modifier = Modifier.fillMaxWidth()
@@ -157,7 +157,7 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                             // El tipo de comida, como "Desayuno:"
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontSize = 30.sp,
-                                fontWeight = FontWeight.Bold,
+                               fontWeight = FontWeight.ExtraBold,
                                 color = textColor // Usa el color personalizado para el texto
                             ),
                             modifier = Modifier
@@ -174,8 +174,8 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                         // El tipo de comida, como "Desayuno:"
                         style = MaterialTheme.typography.titleMedium.copy(
                             fontSize = 26.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.Blue,
+                            fontWeight = FontWeight.ExtraBold,
+                            color = MaterialTheme.colorScheme.primary,
                             textDecoration = TextDecoration.Underline
                         ),
                         modifier = Modifier
@@ -189,6 +189,7 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
             Text(
                 text = meal.description,
                 fontSize = 20.sp,
+               fontWeight = FontWeight.ExtraBold,
                 style = MaterialTheme.typography.bodyLarge,
                 color = Color.White // Asegúrate de que el texto sea visible en el fondo negro
 
@@ -219,7 +220,7 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                 text = "Carbohidratos: ${meal.carbs}g",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
+                color = Color.Cyan,
             )
             Spacer(Modifier.height(16.dp)) // Espacio adicional antes de la imagen
             Image(
@@ -234,7 +235,8 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
     }
 }
 
-// Dummy data for the preview
+
+
 
 @Preview(showBackground = true)
 @Composable

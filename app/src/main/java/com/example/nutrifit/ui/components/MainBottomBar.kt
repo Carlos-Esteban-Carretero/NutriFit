@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Kitchen
 import androidx.compose.material.icons.rounded.LightbulbCircle
-import androidx.compose.material.icons.rounded.Message
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.SportsScore
 import androidx.compose.material3.Badge
@@ -97,7 +96,7 @@ fun getNavigationButtons(): List<NavigationButton> {
         ), NavigationButton(
             title = "Tips",
             icon = Icons.Rounded.LightbulbCircle,
-            screen = NavigationScreen.PlanScreen.route,
+            screen = NavigationScreen.TipsScreen.route,
             hasNews = true,
             badgeCount = 2
         ), NavigationButton(

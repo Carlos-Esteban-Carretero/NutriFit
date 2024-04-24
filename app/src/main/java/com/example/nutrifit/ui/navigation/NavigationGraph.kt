@@ -7,13 +7,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.nutrifit.ui.screens.LoginScreen
 import com.example.nutrifit.ui.screens.PlanScreen
+import com.example.nutrifit.ui.screens.RecipesDetailsScreen
 import com.example.nutrifit.ui.screens.RecipesScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
+import com.example.nutrifit.ui.views.DataViewModel
 
 
 @Composable
-fun NavGraph(pepe: NavHostController) {
-    NavHost(navController = pepe, startDestination = NavigationScreen.PlanScreen.route) {
+fun NavGraph(navHostController: NavHostController, dataViewModel: DataViewModel) {
+    NavHost(navController = navHostController, startDestination = NavigationScreen.PlanScreen.route) {
         composable(NavigationScreen.PlanScreen.route) {
             PlanScreen()
         }
@@ -21,9 +23,14 @@ fun NavGraph(pepe: NavHostController) {
             LoginScreen()
         }
         composable(NavigationScreen.RecipesScreen.route) {
-
-
             RecipesScreen(dayMealPlans)
+        }
+        composable(NavigationScreen.TipsScreen.route) {
+            val pepe = true
+            if (pepe){
+                val recipe = dataViewModel.state.value[0]
+                RecipesDetailsScreen(recipe)
+            }
         }
     }
 }

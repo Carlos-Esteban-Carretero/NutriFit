@@ -286,7 +286,7 @@ fun FormScreen4() {
         }
 
         Text(
-            text = stringResource(R.string.selecciona_dieta),
+            text = stringResource(R.string.select_diet),
             style = MaterialTheme.typography.headlineSmall,
             color = MaterialTheme.colorScheme.primary
         )

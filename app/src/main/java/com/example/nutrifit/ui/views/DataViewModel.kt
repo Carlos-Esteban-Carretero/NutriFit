@@ -13,6 +13,7 @@ import kotlinx.coroutines.tasks.await
 class DataViewModel : ViewModel() {
     val state = mutableStateOf(emptyList<Recipe>())
 
+
     init {
         getData()
     }

@@ -14,7 +14,7 @@ composeMaterial = "1.3.1"
 googleServices = "4.4.1"
 firebaseStorage = "20.3.0"
 firebaseFirestore = "24.11.1"
-coil-compose = "2.5.0"
+coilCompose = "2.6.0"
 
 [libraries]
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
@@ -37,7 +37,7 @@ androidx-compose-material = { group = "androidx.wear.compose", name = "compose-m
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil-compose" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

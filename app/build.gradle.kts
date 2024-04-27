@@ -1,4 +1,3 @@
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -72,17 +71,16 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation ("androidx.compose.ui:ui:1.6.5") // Asegúrate de que la versión es la que soporta fillMaxSize
+    implementation("androidx.compose.ui:ui:1.6.5") // Asegúrate de que la versión es la que soporta fillMaxSize
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("com.google.accompanist:accompanist-pager:0.34.0")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.10.0")
     implementation(libs.coil.compose)
 
 
-
     // Icons
     implementation("androidx.compose.material:material-icons-extended")
-    implementation ("androidx.compose.material:material-icons-core")
-    }
+    implementation("androidx.compose.material:material-icons-core")
+}
 
 

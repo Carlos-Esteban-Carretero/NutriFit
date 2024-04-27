@@ -63,7 +63,7 @@ fun TipsScreen(tips: List<String>) {
                 color = Color.Green,
                 style = MaterialTheme.typography.bodyLarge.copy(
                     textAlign = TextAlign.Center,
-                    fontSize = 20.sp
+                    fontSize = 21.sp
                 ),
                 modifier = Modifier
                     .fillMaxWidth()

@@ -77,6 +77,8 @@ fun ProfileScreen() {
         ProfileStat("IMC:", "28.3 ")
         ProfileStat("Nivel de entrenamiento:", "Sedentario")
         ProfileStat("Tipo de plan:", "Bajada de peso")
+        ProfileStat("Correo electrónico:", "Rouba_94@gmail.com")
+
 
         Spacer(modifier = Modifier.height(24.dp))
         ProfileActionButton("Editar perfil")

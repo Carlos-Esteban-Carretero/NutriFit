@@ -265,7 +265,6 @@ fun CustomOutlinedTextField(
     )
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun FormPlanScreenPreview() {

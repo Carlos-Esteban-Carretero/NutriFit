@@ -21,13 +21,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import com.google.firebase.auth.FirebaseAuth
 
 
 @Composable
 fun LoginScreen() {
     var email by remember { mutableStateOf("") } // Estado para el correo electrónico
     var password by remember { mutableStateOf("") } // Estado para la contraseña
-//    val auth = FirebaseAuth.getInstance() // Instancia de FirebaseAuth
+    val auth = FirebaseAuth.getInstance() // Instancia de FirebaseAuth
 
     // Definimos la estructura de la pantalla de inicio de sesión
     Column(modifier = Modifier.fillMaxSize().background(Color.White), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {

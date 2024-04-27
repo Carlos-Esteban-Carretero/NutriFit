@@ -5,32 +5,54 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.nutrifit.ui.screens.FormPlanScreen
 import com.example.nutrifit.ui.screens.LoginScreen
 import com.example.nutrifit.ui.screens.PlanScreen
+import com.example.nutrifit.ui.screens.ProfileScreen
 import com.example.nutrifit.ui.screens.RecipesDetailsScreen
 import com.example.nutrifit.ui.screens.RecipesScreen
+import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
+import com.example.nutrifit.ui.screens.previewTips
 import com.example.nutrifit.ui.views.DataViewModel
 
 
 @Composable
 fun NavGraph(navHostController: NavHostController, dataViewModel: DataViewModel) {
-    NavHost(navController = navHostController, startDestination = NavigationScreen.PlanScreen.route) {
+    NavHost(navController = navHostController, startDestination = NavigationScreen.LoginScreen.route) {
+        composable(NavigationScreen.FormPlanScreen.route) {
+           FormPlanScreen()
+        }
         composable(NavigationScreen.PlanScreen.route) {
-            PlanScreen()
+           PlanScreen(dayMealPlans)
         }
         composable(NavigationScreen.LoginScreen.route) {
             LoginScreen()
         }
-        composable(NavigationScreen.RecipesScreen.route) {
-            RecipesScreen(dayMealPlans)
+        composable(NavigationScreen.ProfileScreen.route) {
+            ProfileScreen()
         }
-        composable(NavigationScreen.TipsScreen.route) {
-            val pepe = true
-            if (pepe){
-                val recipe = dataViewModel.state.value[0]
+
+        composable(NavigationScreen.RecipesScreen.route) {
+            val recipes = dataViewModel.state.value
+            RecipesScreen(recipes,navHostController)
+        }
+        composable("${NavigationScreen.ProfileScreen.route}/{recipeName}") {
+            val recipeName = it.arguments?.getString("recipeName")
+            val recipe = dataViewModel.state.value.find { it.name == recipeName}
+            if (recipe != null) {
                 RecipesDetailsScreen(recipe)
+            } else{
+                navHostController.navigate(NavigationScreen.RecipesScreen.route)
             }
+
+
+
+        }
+
+        composable(NavigationScreen.TipsScreen.route) {
+            TipsScreen(previewTips)
+
         }
     }
 }

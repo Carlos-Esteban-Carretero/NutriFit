@@ -102,7 +102,7 @@ fun getNavigationButtons(): List<NavigationButton> {
         ), NavigationButton(
             title = "Profile",
             icon = Icons.Rounded.Person,
-            screen = NavigationScreen.PlanScreen.route,
+            screen = NavigationScreen.ProfileScreen.route,
             hasNews = false
         )
     )

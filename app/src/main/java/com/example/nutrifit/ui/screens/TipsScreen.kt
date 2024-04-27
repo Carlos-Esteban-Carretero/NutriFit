@@ -103,7 +103,7 @@ fun TipsScreen(tips: List<String>) {
 
     }
 }
-private val previewTips = listOf(
+val previewTips = listOf(
         "Escoge alimentos integrales: Opta por alimentos integrales en lugar de opciones refinadas para obtener más fibra y nutrientes.",
         "Incorpora grasas saludables: Agrega fuentes de grasas saludables como aguacate, frutos secos y aceite de oliva a tu dieta.",
         "Prueba nuevas recetas: Experimenta con recetas saludables y sabrosas para evitar el aburrimiento en tu dieta.",

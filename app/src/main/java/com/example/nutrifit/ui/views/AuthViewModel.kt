@@ -1,4 +1,4 @@
-package com.example.nutrifit.ui.screens
+package com.example.nutrifit.ui.views
 
 import androidx.lifecycle.ViewModel
 

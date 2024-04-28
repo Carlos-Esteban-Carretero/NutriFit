@@ -14,45 +14,48 @@ import com.example.nutrifit.ui.screens.RecipesScreen
 import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
-import com.example.nutrifit.ui.views.DataViewModel
-
+import com.example.nutrifit.ui.views.RecipeViewModel
 
 @Composable
-fun NavGraph(navHostController: NavHostController, dataViewModel: DataViewModel) {
-    NavHost(navController = navHostController, startDestination = NavigationScreen.LoginScreen.route) {
+fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel) {
+    NavHost(
+        navController = navHostController,
+        startDestination = NavigationScreen.LoginScreen.route
+    ) {
         composable(NavigationScreen.FormPlanScreen.route) {
-           FormPlanScreen()
+            FormPlanScreen()
         }
+
         composable(NavigationScreen.PlanScreen.route) {
-           PlanScreen(dayMealPlans)
+            PlanScreen(dayMealPlans)
         }
+
         composable(NavigationScreen.LoginScreen.route) {
             LoginScreen()
         }
+
         composable(NavigationScreen.ProfileScreen.route) {
             ProfileScreen()
         }
 
         composable(NavigationScreen.RecipesScreen.route) {
-            val recipes = dataViewModel.state.value
-            RecipesScreen(recipes,navHostController)
+            val recipes = recipeViewModel.recipes.value
+            RecipesScreen(recipes, navHostController)
         }
-        composable("${NavigationScreen.ProfileScreen.route}/{recipeName}") {
+
+        composable("${NavigationScreen.RecipesScreen.route}/{recipeName}") {
             val recipeName = it.arguments?.getString("recipeName")
-            val recipe = dataViewModel.state.value.find { it.name == recipeName}
+            val recipe = recipeViewModel.recipes.value.find { it.name == recipeName }
+
             if (recipe != null) {
                 RecipesDetailsScreen(recipe)
-            } else{
+            } else {
                 navHostController.navigate(NavigationScreen.RecipesScreen.route)
             }
-
-
-
         }
 
         composable(NavigationScreen.TipsScreen.route) {
             TipsScreen(previewTips)
-
         }
     }
 }

@@ -47,7 +47,7 @@ fun RecipesScreen(recipes: List<Recipe>, navHostController: NavHostController) {
                     )
                 }
                 Button(onClick = {
-                    val route = "${NavigationScreen.ProfileScreen.route}/${recipe.name}"
+                    val route = "${NavigationScreen.RecipesScreen.route}/${recipe.name}"
                     navHostController.navigate(route)
                 }) {}
             }

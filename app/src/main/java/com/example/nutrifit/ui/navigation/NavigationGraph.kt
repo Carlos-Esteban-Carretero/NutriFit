@@ -48,7 +48,7 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
             val recipe = recipeViewModel.recipes.value.find { it.name == recipeName }
 
             if (recipe != null) {
-                RecipesDetailsScreen(recipe)
+                RecipesDetailsScreen(recipe = recipe, navController = navHostController)
             } else {
                 navHostController.navigate(NavigationScreen.RecipesScreen.route)
             }

@@ -41,7 +41,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     packaging {
         resources {
@@ -51,7 +51,7 @@ android {
 }
 
 dependencies {
-
+    // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.material)
+
+    // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,22 +70,25 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.ui)
-    implementation(libs.androidx.navigation.compose)
-    implementation(libs.accompanist.pager)
-    implementation(libs.accompanist.pager.indicators)
-    implementation(libs.coil.compose)
 
-    //Firebase
-    implementation(libs.firebase.storage)
-    implementation(libs.firebase.firestore)
-    implementation(libs.firebase.auth.ktx)
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // Image
+    implementation(libs.coil.compose)
 
     // Icons
     //noinspection UseTomlInstead
-    implementation("androidx.compose.material:material-icons-extended")
-    //noinspection UseTomlInstead
     implementation("androidx.compose.material:material-icons-core")
+    //noinspection UseTomlInstead
+    implementation("androidx.compose.material:material-icons-extended")
+
+    // Pager
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
+
+    // Firebase
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.storage)
+    implementation(libs.firebase.firestore)
 }
-
-

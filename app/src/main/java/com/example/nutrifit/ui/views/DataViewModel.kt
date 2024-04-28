@@ -22,10 +22,6 @@ class DataViewModel : ViewModel() {
             val data = getAllDataFromFireStore()
             state.value = data
     }
-    val pepe = true
-    if (pepe) {
-        Log.d("hola", "rober")
-    }
 }
 
 private suspend fun getAllDataFromFireStore(): List<Recipe> {

@@ -14,8 +14,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.nutrifit.data.Recipe
 import com.example.nutrifit.ui.navigation.NavigationScreen
@@ -36,14 +38,13 @@ fun RecipesScreen(recipes: List<Recipe>, navHostController: NavHostController) {
                         .aspectRatio(3f / 2f)
                         .clip(MaterialTheme.shapes.large)
                 ) {
-
-                        Image(
-                            painter = rememberAsyncImagePainter(model = recipe.image),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clip(MaterialTheme.shapes.large)
-                        )
+                    Image(
+                        painter = rememberAsyncImagePainter(model = recipe.image),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .clip(MaterialTheme.shapes.large)
+                    )
                 }
                 Button(onClick = {
                     val route = "${NavigationScreen.ProfileScreen.route}/${recipe.name}"
@@ -54,8 +55,9 @@ fun RecipesScreen(recipes: List<Recipe>, navHostController: NavHostController) {
     }
 }
 
-//@Preview(showBackground = true)
-//@Composable
-//fun RecipesScreenPreview() {
-//    RecipesScreen()
-//}
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+fun RecipesScreenPreview() {
+    val recipes: List<Recipe> = listOf(Recipe(), Recipe(), Recipe())
+    RecipesScreen(recipes, rememberNavController())
+}

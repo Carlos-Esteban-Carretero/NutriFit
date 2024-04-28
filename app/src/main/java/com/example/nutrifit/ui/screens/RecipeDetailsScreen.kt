@@ -20,6 +20,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.nutrifit.data.Recipe
@@ -118,4 +119,18 @@ fun RecipesDetailsContent(recipe: Recipe) {
     }
 }
 
+@Preview(showSystemUi = true, showBackground = true)
+@Composable
+fun RecipesDetailsScreenPreview() {
+    RecipesDetailsScreen(
+        recipe = Recipe(
+            "Nombre de la receta",
+            "Descripción de la receta",
+            "",
+            100,
+            100,
+            100
+        )
+    )
+}
 

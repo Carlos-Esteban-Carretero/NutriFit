@@ -38,7 +38,6 @@ import androidx.navigation.NavController
 import com.example.nutrifit.ui.navigation.NavigationScreen
 import com.example.nutrifit.ui.views.AuthViewModel
 
-
 @Composable
 fun LoginScreen(
     navController: NavController,

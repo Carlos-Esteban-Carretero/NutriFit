@@ -6,11 +6,13 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.nutrifit.ui.screens.FormPlanScreen
+import com.example.nutrifit.ui.screens.Home
 import com.example.nutrifit.ui.screens.LoginScreen
 import com.example.nutrifit.ui.screens.PlanScreen
 import com.example.nutrifit.ui.screens.ProfileScreen
 import com.example.nutrifit.ui.screens.RecipesDetailsScreen
 import com.example.nutrifit.ui.screens.RecipesScreen
+import com.example.nutrifit.ui.screens.SplashScreen
 import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
@@ -20,7 +22,7 @@ import com.example.nutrifit.ui.views.RecipeViewModel
 fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel) {
     NavHost(
         navController = navHostController,
-        startDestination = NavigationScreen.LoginScreen.route
+        startDestination = NavigationScreen.SplashScreen.route
     ) {
         composable(NavigationScreen.FormPlanScreen.route) {
             FormPlanScreen()
@@ -28,6 +30,12 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
 
         composable(NavigationScreen.PlanScreen.route) {
             PlanScreen(dayMealPlans)
+        }
+        composable(NavigationScreen.SplashScreen.route) {
+            SplashScreen(navHostController)
+        }
+        composable(NavigationScreen.HomeScreen.route) {
+            Home(navHostController)
         }
 
         composable(NavigationScreen.LoginScreen.route) {

@@ -31,7 +31,7 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
         }
 
         composable(NavigationScreen.LoginScreen.route) {
-            LoginScreen()
+            LoginScreen(navHostController)
         }
 
         composable(NavigationScreen.ProfileScreen.route) {
@@ -59,6 +59,7 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
         }
     }
 }
+
 
 
 

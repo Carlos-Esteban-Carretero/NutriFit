@@ -81,7 +81,7 @@ dependencies {
     //noinspection UseTomlInstead
     implementation("androidx.compose.material:material-icons-core")
     //noinspection UseTomlInstead
-    implementation("androidx.compose.material:material-icons-extended")
+    implementation ("androidx.compose.material:material-icons-extended:1.6.6")
 
     // Pager
     implementation(libs.accompanist.pager)

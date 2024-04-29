@@ -49,9 +49,12 @@ fun SplashScreen (navController: NavController){
         }
         else{
             navController.navigate(NavigationScreen.HomeScreen.route){
-            popUpTo(NavigationScreen.SplashScreen.route){
-                inclusive = true
-            }
+
+             // poner PopUp cuando termine todas las pruebas del login.
+//            popUpTo(NavigationScreen.SplashScreen.route){
+//                inclusive = true
+//            }
+
             }
         }
     }

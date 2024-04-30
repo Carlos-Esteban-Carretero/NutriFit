@@ -2,6 +2,7 @@ package com.example.nutrifit.ui.components
 
 import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.BugReport
 import androidx.compose.material.icons.rounded.Kitchen
 import androidx.compose.material.icons.rounded.LightbulbCircle
 import androidx.compose.material.icons.rounded.Person
@@ -103,6 +104,11 @@ fun getNavigationButtons(): List<NavigationButton> {
             title = "Profile",
             icon = Icons.Rounded.Person,
             screen = NavigationScreen.ProfileScreen.route,
+            hasNews = false
+        ), NavigationButton(
+            title = "Test",
+            icon = Icons.Rounded.BugReport,
+            screen = NavigationScreen.PlanScreen.route,
             hasNews = false
         )
     )

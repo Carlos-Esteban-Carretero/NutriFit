@@ -19,16 +19,9 @@ class PlanViewModel : ViewModel() {
     }
 
     private fun fetchAllPlans() {
-//        viewModelScope.launch {
-//            val allPlans = getAllPlansFromFirestore()
-//            _plans.value = allPlans
-//        }
-        val firestoreDb = FirebaseFirestore.getInstance()
-        val querySnapshot = firestoreDb.collection("plans").get().await()
-        querySnapshot.documents.mapNotNull { it.toObject(Plan::class.java) }
-        val pepe = true
-        if (pepe){
-            Log.d("PlanViewModel", "Test")
+        viewModelScope.launch {
+            val allPlans = getAllPlansFromFirestore()
+            _plans.value = allPlans
         }
     }
 

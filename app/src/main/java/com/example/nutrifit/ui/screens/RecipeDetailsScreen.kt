@@ -55,7 +55,7 @@ fun RecipesDetailsScreen(recipe: Recipe, navController: NavController) {
                     }
                 },
                 title = {
-                    Text(text = recipe.name, color = Color.Blue)
+                    Text(text = recipe.name, color = Color.White)
                 },
                 modifier = Modifier
                     .fillMaxWidth()

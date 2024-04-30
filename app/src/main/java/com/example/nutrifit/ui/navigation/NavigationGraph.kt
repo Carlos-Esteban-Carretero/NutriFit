@@ -1,6 +1,7 @@
 package com.example.nutrifit.ui.navigation
 
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -16,10 +17,11 @@ import com.example.nutrifit.ui.screens.SplashScreen
 import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
+import com.example.nutrifit.ui.views.PlanViewModel
 import com.example.nutrifit.ui.views.RecipeViewModel
 
 @Composable
-fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel) {
+fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel, planViewModel: PlanViewModel) {
     NavHost(
         navController = navHostController,
         startDestination = NavigationScreen.SplashScreen.route
@@ -29,6 +31,7 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
         }
 
         composable(NavigationScreen.PlanScreen.route) {
+            Log.d("PlanViewModel", "$planViewModel")
             PlanScreen(dayMealPlans)
         }
         composable(NavigationScreen.SplashScreen.route) {

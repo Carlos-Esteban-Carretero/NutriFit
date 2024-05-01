@@ -14,6 +14,7 @@ import com.example.nutrifit.ui.screens.ProfileScreen
 import com.example.nutrifit.ui.screens.RecipesDetailsScreen
 import com.example.nutrifit.ui.screens.RecipesScreen
 import com.example.nutrifit.ui.screens.SplashScreen
+import com.example.nutrifit.ui.screens.TestScreen
 import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
@@ -70,16 +71,12 @@ fun NavigationGraph(navHostController: NavHostController, dataViewModel: DataVie
 
         composable(NavigationScreen.TestScreen.route) {
             val plan = dataViewModel.plans.value[1]
-            val day = "monday"
-            val meal = "breakfast"
-            val recipeDetail = runBlocking {
-                dataViewModel.getRecipeDetailsFromPlan(plan, day, meal)
-            }
-
-            if (recipeDetail != null){
-                Log.d ("NavigationGraph","El recipe es $recipeDetail")
-            }
-            TipsScreen(previewTips)
+//            val day = "monday"
+//            val meal = "breakfast"
+//            val recipeDetail = runBlocking {
+//                dataViewModel.getRecipeDetailsFromPlan(plan, day, meal)
+//            }
+            TestScreen(plan, dataViewModel)
         }
     }
 }

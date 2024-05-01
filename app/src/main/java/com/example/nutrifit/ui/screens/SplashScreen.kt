@@ -42,9 +42,9 @@ fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
         scale.animateTo(
             targetValue = 1.0f, // Ajustado para escalar hasta el tamaño completo del círculo
-            animationSpec = tween(durationMillis = 1700, easing = { OvershootInterpolator(8f).getInterpolation(it) })
+            animationSpec = tween(durationMillis = 1000, easing = { OvershootInterpolator(8f).getInterpolation(it) })
         )
-        delay(4000L)
+        delay(1000L)
         if (FirebaseAuth.getInstance().currentUser?.email.isNullOrEmpty()) {
             navController.navigate(NavigationScreen.LoginScreen.route)
         } else {

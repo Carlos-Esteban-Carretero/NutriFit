@@ -8,7 +8,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.nutrifit.ui.screens.FormPlan2Screen
 import com.example.nutrifit.ui.screens.FormPlanScreen
-import com.example.nutrifit.ui.screens.Home
 import com.example.nutrifit.ui.screens.LoginScreen
 import com.example.nutrifit.ui.screens.PlanScreen
 import com.example.nutrifit.ui.screens.ProfileScreen
@@ -25,7 +24,7 @@ import com.example.nutrifit.ui.views.RecipeViewModel
 fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel, planViewModel: PlanViewModel) {
     NavHost(
         navController = navHostController,
-        startDestination = NavigationScreen.FormPlanScreen.route
+        startDestination = NavigationScreen.SplashScreen.route
     ) {
         composable(NavigationScreen.FormPlanScreen.route) {
             FormPlanScreen(navController = navHostController)
@@ -40,9 +39,6 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
         }
         composable(NavigationScreen.SplashScreen.route) {
             SplashScreen(navHostController)
-        }
-        composable(NavigationScreen.HomeScreen.route) {
-            Home(navHostController)
         }
 
         composable(NavigationScreen.LoginScreen.route) {

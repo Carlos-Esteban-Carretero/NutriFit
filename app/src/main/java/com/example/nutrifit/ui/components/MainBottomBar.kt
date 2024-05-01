@@ -87,7 +87,7 @@ fun getNavigationButtons(): List<NavigationButton> {
         NavigationButton(
             title = "Plan",
             icon = Icons.Rounded.SportsScore,
-            screen = NavigationScreen.PlanScreen.route,
+            screen = NavigationScreen.FormPlanScreen.route,
             hasNews = false
         ), NavigationButton(
             title = "Recipes",

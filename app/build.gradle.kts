@@ -92,4 +92,10 @@ dependencies {
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.storage)
     implementation(libs.firebase.firestore)
+
+    // ViewModel
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.kotlinx.coroutines.android)
+
 }

@@ -62,7 +62,7 @@ fun LoginScreen(
                  email, password ->
                    Log.d("MascotaFeliz", "Logueando con $email y $password")
                     viewModel.signInWhitEmailAndPassword(email, password){
-                        navController.navigate(NavigationScreen.FormPlanScreen.route)
+                        navController.navigate(NavigationScreen.SplashScreen.route)
                     }
 
                 }
@@ -76,7 +76,7 @@ fun LoginScreen(
                         email, password ->
                     Log.d("MascotaFeliz", "Creando cuenta con $email y $password")
                     viewModel.createUserWithEmailAndPassword(email, password){
-                        navController.navigate(NavigationScreen.FormPlanScreen.route)
+                        navController.navigate(NavigationScreen.SplashScreen.route)
 
                     }
 

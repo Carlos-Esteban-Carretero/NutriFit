@@ -57,13 +57,13 @@ fun GenderButton(gender: String, iconRes: Int, selectedGender: String, onGenderS
         Image(
             painter = painterResource(id = iconRes),
             contentDescription = "Ícono de $gender",
-            modifier = Modifier.size(50.dp), // Ajuste del tamaño del ícono
+            modifier = Modifier.size(40.dp), // Ajuste del tamaño del ícono
             contentScale = ContentScale.Fit
         )
         Spacer(Modifier.width(3.dp))
         Text(
             text = gender,
-            fontSize = 19.sp,
+            fontSize = 15.sp,
             fontWeight = FontWeight.ExtraBold,
             color = Color.Black // Texto en color negro
         )

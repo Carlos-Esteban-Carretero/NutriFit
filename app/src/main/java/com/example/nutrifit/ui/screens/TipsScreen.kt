@@ -4,14 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -31,51 +32,62 @@ import com.google.accompanist.pager.HorizontalPagerIndicator
 import com.google.accompanist.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
-
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun TipsScreen(tips: List<String>) {
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
 
-    Column(modifier = Modifier.fillMaxSize()) {
-
-        Spacer(Modifier.height(40.dp))
-        HorizontalPagerIndicator(
-            pagerState = pagerState,
-            modifier = Modifier
-                .background(Color.DarkGray)
-                .align(Alignment.CenterHorizontally) // Asegúrate de que Alignment está importado correctamente
-                .padding(16.dp)
-        )
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .background(Color.Black)
+        .padding(top = 16.dp, bottom = 56.dp), // Añadido un padding inferior para evitar la barra de navegación
+        verticalArrangement = Arrangement.SpaceBetween // Asegura que los elementos estén distribuidos de forma equitativa
+    ) {
         HorizontalPager(
             count = tips.size,
             state = pagerState,
             modifier = Modifier
-                .weight(1f) // Corregido aquí, weight no lleva paréntesis
-                .background(Color.Black)
-        )
-
-
-         { page ->
-            Text(
-                text = tips[page],
-                color = Color.Green,
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    textAlign = TextAlign.Center,
-                    fontSize = 21.sp
-                ),
+                .weight(1f)
+                .padding(horizontal = 12.dp)
+        ) { page ->
+            Card(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(12.dp)
-            )
+                    .padding(vertical = 4.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(16.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Column(
+                    modifier = Modifier
+                        .background(Color.DarkGray)
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        text = tips[page],
+                        color = Color.White,
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            textAlign = TextAlign.Center,
+                            fontSize = 18.sp
+                        )
+                    )
+                }
+            }
         }
+
+        HorizontalPagerIndicator(
+            pagerState = pagerState,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp),
+            activeColor = Color.Cyan,
+            inactiveColor = Color.Gray
+        )
 
         Row(
             modifier = Modifier
-                .background(Color.DarkGray)
                 .fillMaxWidth()
-                .padding(10.dp),
+                .padding(horizontal = 10.dp, vertical = 8.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -86,7 +98,7 @@ fun TipsScreen(tips: List<String>) {
                     }
                 }
             ) {
-                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Previous")
+                Icon(imageVector = Icons.Default.ArrowBack, contentDescription = "Previous", tint = Color.White)
             }
 
             IconButton(
@@ -96,11 +108,9 @@ fun TipsScreen(tips: List<String>) {
                     }
                 }
             ) {
-                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "Next")
+                Icon(imageVector = Icons.Default.ArrowForward, contentDescription = "Next", tint = Color.White)
             }
         }
-        Spacer(Modifier.height(60.dp))
-
     }
 }
 val previewTips = listOf(

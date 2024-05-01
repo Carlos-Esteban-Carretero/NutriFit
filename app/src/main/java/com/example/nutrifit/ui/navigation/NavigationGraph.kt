@@ -1,6 +1,7 @@
 package com.example.nutrifit.ui.navigation
 
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -17,6 +18,7 @@ import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
 import com.example.nutrifit.ui.views.DataViewModel
+import kotlinx.coroutines.runBlocking
 
 @Composable
 fun NavigationGraph(navHostController: NavHostController, dataViewModel: DataViewModel) {
@@ -70,11 +72,14 @@ fun NavigationGraph(navHostController: NavHostController, dataViewModel: DataVie
             val plan = dataViewModel.plans.value[1]
             val day = "monday"
             val meal = "breakfast"
-//            val recipeDetail = dataViewModel.getRecipeDetailsFromPlan(plan, day, meal)
-//            Log.d ("NavigationGraph","El recipe es $recipeDetail")
-//            if (recipeDetail != null){
-//                Log.d ("NavigationGraph","El recipe es $recipeDetail")
-//            }
+            val recipeDetail = runBlocking {
+                dataViewModel.getRecipeDetailsFromPlan(plan, day, meal)
+            }
+
+            if (recipeDetail != null){
+                Log.d ("NavigationGraph","El recipe es $recipeDetail")
+            }
+            TipsScreen(previewTips)
         }
     }
 }

@@ -27,9 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.nutrifit.ui.navigation.NavigationScreen
 
 @Composable
-fun MainBottomBar(
-    navHostController: NavHostController
-) {
+fun MainBottomBar(navHostController: NavHostController) {
     var selectedButton by remember { mutableIntStateOf(0) }
     val buttons = getNavigationButtons()
 
@@ -58,8 +56,7 @@ fun MainBottomBar(
                             tint = if (index == selectedButton) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
-                }
-            )
+                })
         }
     }
 }

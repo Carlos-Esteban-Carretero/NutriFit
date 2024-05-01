@@ -15,6 +15,7 @@ import kotlinx.coroutines.tasks.await
 class DataViewModel : ViewModel() {
     private val _recipes = mutableStateOf(emptyList<Recipe>())
     val recipes = _recipes
+
     private val _plans = mutableStateOf(emptyList<Plan>())
     val plans = _plans
 
@@ -49,7 +50,6 @@ class DataViewModel : ViewModel() {
         }
     }
 
-
     private suspend fun getAllPlansFromFirestore(): List<Plan> {
         val firestoreDb = FirebaseFirestore.getInstance()
 
@@ -62,7 +62,7 @@ class DataViewModel : ViewModel() {
         }
     }
 
-  fun getRecipeDetailsFromPlan(plan: Plan, day: String, meal: String):Recipe? {
+    suspend fun getRecipeDetailsFromPlan(plan: Plan, day: String, meal: String): Recipe? {
         val recipeReference = plan.schedule[day]?.get(meal)
         return if (recipeReference != null) {
             getRecipeFromReference(recipeReference)
@@ -77,8 +77,7 @@ class DataViewModel : ViewModel() {
             documentSnapshot.toObject(Recipe::class.java)
         } catch (e: FirebaseFirestoreException) {
             Log.d("DataVieModel", "Error fetching recipe: $e")
-           null
+            null
         }
-
     }
 }

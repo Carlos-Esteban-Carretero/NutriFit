@@ -65,6 +65,7 @@ fun NavigationGraph(navHostController: NavHostController, dataViewModel: DataVie
         composable(NavigationScreen.TipsScreen.route) {
             TipsScreen(previewTips)
         }
+
         composable(NavigationScreen.TestScreen.route) {
             val plan = dataViewModel.plans.value[1]
             val day = "monday"

@@ -1,7 +1,6 @@
 package com.example.nutrifit.ui.navigation
 
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -17,11 +16,10 @@ import com.example.nutrifit.ui.screens.SplashScreen
 import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
-import com.example.nutrifit.ui.views.PlanViewModel
-import com.example.nutrifit.ui.views.RecipeViewModel
+import com.example.nutrifit.ui.views.DataViewModel
 
 @Composable
-fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel, planViewModel: PlanViewModel) {
+fun NavigationGraph(navHostController: NavHostController, dataViewModel: DataViewModel) {
     NavHost(
         navController = navHostController,
         startDestination = NavigationScreen.SplashScreen.route
@@ -34,7 +32,6 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
         }
 
         composable(NavigationScreen.PlanScreen.route) {
-            Log.d("PlanViewModel", "$planViewModel")
             PlanScreen(dayMealPlans)
         }
         composable(NavigationScreen.SplashScreen.route) {
@@ -50,13 +47,13 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
         }
 
         composable(NavigationScreen.RecipesScreen.route) {
-            val recipes = recipeViewModel.recipes.value
+            val recipes = dataViewModel.recipes.value
             RecipesScreen(recipes, navHostController)
         }
 
         composable("${NavigationScreen.RecipesScreen.route}/{recipeName}") {
             val recipeName = it.arguments?.getString("recipeName")
-            val recipe = recipeViewModel.recipes.value.find { it.name == recipeName }
+            val recipe = dataViewModel.recipes.value.find { it.name == recipeName }
 
             if (recipe != null) {
                 RecipesDetailsScreen(recipe = recipe, navController = navHostController)
@@ -67,6 +64,16 @@ fun NavigationGraph(navHostController: NavHostController, recipeViewModel: Recip
 
         composable(NavigationScreen.TipsScreen.route) {
             TipsScreen(previewTips)
+        }
+        composable(NavigationScreen.TestScreen.route) {
+            val plan = dataViewModel.plans.value[1]
+            val day = "monday"
+            val meal = "breakfast"
+//            val recipeDetail = dataViewModel.getRecipeDetailsFromPlan(plan, day, meal)
+//            Log.d ("NavigationGraph","El recipe es $recipeDetail")
+//            if (recipeDetail != null){
+//                Log.d ("NavigationGraph","El recipe es $recipeDetail")
+//            }
         }
     }
 }

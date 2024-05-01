@@ -14,12 +14,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.nutrifit.ui.components.MainBottomBar
 import com.example.nutrifit.ui.navigation.NavigationGraph
 import com.example.nutrifit.ui.theme.NutriFitTheme
+import com.example.nutrifit.ui.views.DataViewModel
 import com.example.nutrifit.ui.views.PlanViewModel
 import com.example.nutrifit.ui.views.RecipeViewModel
 
 class MainActivity : ComponentActivity() {
-    private val recipeViewModel: RecipeViewModel by viewModels()
-    private val planViewModel: PlanViewModel by viewModels()
+//    private val recipeViewModel: RecipeViewModel by viewModels()
+//    private val planViewModel: PlanViewModel by viewModels()
+    private val dataViewModel: DataViewModel by viewModels()
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Scaffold(bottomBar = { MainBottomBar(navController) }
                     ) {
-                        NavigationGraph(navController,recipeViewModel,planViewModel)
+                        NavigationGraph(navController,dataViewModel)
                     }
 
                 }

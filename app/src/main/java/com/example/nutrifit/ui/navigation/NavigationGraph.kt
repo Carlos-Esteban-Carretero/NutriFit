@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.nutrifit.ui.screens.FormPlan2Screen
 import com.example.nutrifit.ui.screens.FormPlanScreen
 import com.example.nutrifit.ui.screens.Home
 import com.example.nutrifit.ui.screens.LoginScreen
@@ -24,10 +25,13 @@ import com.example.nutrifit.ui.views.RecipeViewModel
 fun NavigationGraph(navHostController: NavHostController, recipeViewModel: RecipeViewModel, planViewModel: PlanViewModel) {
     NavHost(
         navController = navHostController,
-        startDestination = NavigationScreen.SplashScreen.route
+        startDestination = NavigationScreen.FormPlanScreen.route
     ) {
         composable(NavigationScreen.FormPlanScreen.route) {
-            FormPlanScreen()
+            FormPlanScreen(navController = navHostController)
+        }
+        composable(NavigationScreen.FormPlan2Screen.route) {
+            FormPlan2Screen() // Llamada a tu pantalla FormPlan2
         }
 
         composable(NavigationScreen.PlanScreen.route) {

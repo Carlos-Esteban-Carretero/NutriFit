@@ -41,7 +41,7 @@ fun SplashScreen(navController: NavController) {
 
     LaunchedEffect(key1 = true) {
         scale.animateTo(
-            targetValue = 1.0f, // Ajustado para escalar hasta el tamaño completo del círculo
+            targetValue = 1.0f,
             animationSpec = tween(durationMillis = 1700, easing = { OvershootInterpolator(8f).getInterpolation(it) })
         )
         delay(4000L)
@@ -55,7 +55,7 @@ fun SplashScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black), // Fondo negro para toda la pantalla
+            .background(Color.Black),
         contentAlignment = Alignment.Center
     ) {
         Surface(

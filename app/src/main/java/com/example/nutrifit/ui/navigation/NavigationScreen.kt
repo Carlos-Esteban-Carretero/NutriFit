@@ -10,5 +10,6 @@ sealed class NavigationScreen(val route: String) {
     data object TipsScreen : NavigationScreen("Tips")
     data object ProfileScreen: NavigationScreen( "Profile")
     data object TestScreen: NavigationScreen( "Test")
-    data object FormPlan2Screen: NavigationScreen("PlanForm2") // Nueva ruta añadida
+    data object FormPlan2Screen: NavigationScreen("PlanForm2")
+    data object ThanksToScreen: NavigationScreen("ThanksToScreen")
 }

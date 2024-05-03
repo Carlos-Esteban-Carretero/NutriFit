@@ -47,7 +47,6 @@ fun RecipesScreen(recipes: List<Recipe>, navHostController: NavHostController) {
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier
                         .padding(8.dp))
-                // Tarjeta con la imagen del cóctel
                 Card(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -64,7 +63,7 @@ fun RecipesScreen(recipes: List<Recipe>, navHostController: NavHostController) {
                 }
                 Button(modifier = Modifier.width(230.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Blue // Fondo rojo para el botón
+                        containerColor = Color.Blue
                     ),
                     onClick = {
                     val route = "${NavigationScreen.RecipesScreen.route}/${recipe.name}"

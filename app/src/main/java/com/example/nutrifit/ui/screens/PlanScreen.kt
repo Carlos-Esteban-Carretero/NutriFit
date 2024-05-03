@@ -105,7 +105,7 @@ fun DayMealPlanCard(dayMealPlan: DayMealPlan) {
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
     ) {
         Column {
-            // Fondo amarillo con esquinas redondeadas para el día de la semana
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -131,7 +131,7 @@ fun DayMealPlanCard(dayMealPlan: DayMealPlan) {
 
 @Composable
 fun MealCard(mealType: String, meal: Meal, iconId: Int) {
-    val textColor = Color.Yellow // Un color que destaque sobre fondo negro
+    val textColor = Color.Yellow
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -147,14 +147,13 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                     painter = painterResource(id = iconId),
                     contentDescription = "$mealType icon",
                     modifier = Modifier.size(80.dp),
-                    tint = Color.Unspecified // Para mantener los colores originales del SVG
+                    tint = Color.Unspecified
                 )
                 Column {
                     Box (Modifier.size(200.dp,40.dp).background(Color (0xC0FF5722), RoundedCornerShape(10.dp))){
                         Text(
                             textAlign = TextAlign.Center,
                             text = "$mealType:",
-                            // El tipo de comida, como "Desayuno:"
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontSize = 30.sp,
                                fontWeight = FontWeight.ExtraBold,

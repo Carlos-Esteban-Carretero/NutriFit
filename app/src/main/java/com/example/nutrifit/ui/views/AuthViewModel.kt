@@ -19,14 +19,14 @@ class AuthViewModel : ViewModel() {
             try {
                 auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Log.d("Mascota Feliz", "signInWithEmailAndPassword logueado!!")
+                        Log.d("Nutrifit", "signInWithEmailAndPassword logueado!!")
                         home()
                     } else {
-                        Log.d("Mascota Feliz", "signInWithEmailAndPassword: ${task.result.toString()}")
+                        Log.d("Nutrifit", "signInWithEmailAndPassword: ${task.result.toString()}")
                     }
                 }
             } catch (ex: Exception) {
-                Log.d("Mascota Feliz", "signInWithEmailAndPassword: ${ex.message}")
+                Log.d("Nutrifit", "signInWithEmailAndPassword: ${ex.message}")
             }
         }
 

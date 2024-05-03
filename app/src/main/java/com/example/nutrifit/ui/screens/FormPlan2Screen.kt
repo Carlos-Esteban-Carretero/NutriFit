@@ -158,8 +158,8 @@ fun FormPlan2Screen() {
                     textColor = MaterialTheme.colors.onSurface,
                     disabledTextColor = Color.Transparent,
                     cursorColor = MaterialTheme.colors.onSurface,
-                    focusedIndicatorColor = Color.Transparent, // Para remover la línea inferior cuando está enfocado
-                    unfocusedIndicatorColor = Color.Transparent // Para remover la línea inferior cuando no está enfocado
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 ),
                 modifier = Modifier
                     .fillMaxWidth()

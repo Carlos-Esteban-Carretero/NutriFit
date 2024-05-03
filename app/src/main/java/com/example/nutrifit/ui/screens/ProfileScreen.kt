@@ -47,7 +47,7 @@ fun ProfileScreen() {
         contract = ActivityResultContracts.StartActivityForResult()
     ) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
-            imageUri = result.data?.data // Handle the returned Uri
+            imageUri = result.data?.data
         }
     }
 

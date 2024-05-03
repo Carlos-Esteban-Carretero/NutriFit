@@ -105,7 +105,7 @@ fun getNavigationButtons(): List<NavigationButton> {
         ), NavigationButton(
             title = "Test",
             icon = Icons.Rounded.BugReport,
-            screen = NavigationScreen.TestScreen.route,
+            screen = NavigationScreen.PlanScreen.route,
             hasNews = false
         )
     )

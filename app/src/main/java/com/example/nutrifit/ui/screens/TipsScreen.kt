@@ -1,5 +1,6 @@
 package com.example.nutrifit.ui.screens
-
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,10 +19,13 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,13 +41,23 @@ import kotlinx.coroutines.launch
 fun TipsScreen(tips: List<String>) {
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
+    val scale = remember { Animatable(1f) }
+
+    LaunchedEffect(pagerState.currentPage) {
+        scale.animateTo(
+            targetValue = 1.1f,
+            animationSpec = tween(durationMillis = 300)
+        )
+        scale.animateTo(
+            targetValue = 1f,
+            animationSpec = tween(durationMillis = 300)
+        )
+    }
 
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.Black)
-        .padding(top = 16.dp, bottom = 56.dp), // Añadido un padding inferior para evitar la barra de navegación
-        verticalArrangement = Arrangement.SpaceBetween // Asegura que los elementos estén distribuidos de forma equitativa
-    ) {
+        .padding(top = 40.dp, bottom = 80.dp)) {
         HorizontalPager(
             count = tips.size,
             state = pagerState,
@@ -53,6 +67,10 @@ fun TipsScreen(tips: List<String>) {
         ) { page ->
             Card(
                 modifier = Modifier
+                    .graphicsLayer {  // Aplica la transformación de escala
+                        scaleX = scale.value
+                        scaleY = scale.value
+                    }
                     .padding(vertical = 4.dp)
                     .fillMaxWidth(),
                 shape = RoundedCornerShape(16.dp),
@@ -74,7 +92,6 @@ fun TipsScreen(tips: List<String>) {
                 }
             }
         }
-
         HorizontalPagerIndicator(
             pagerState = pagerState,
             modifier = Modifier
@@ -83,7 +100,6 @@ fun TipsScreen(tips: List<String>) {
             activeColor = Color.Cyan,
             inactiveColor = Color.Gray
         )
-
         Row(
             modifier = Modifier
                 .fillMaxWidth()

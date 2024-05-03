@@ -8,3 +8,4 @@ import androidx.navigation.NavController
 fun Home (navController: NavController){
     Text (text = "Estamos en home")
 }
+//Futura Pestaña a Desarrollar.

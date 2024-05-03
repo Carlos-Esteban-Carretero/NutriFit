@@ -135,7 +135,7 @@ fun FormPlanScreen(navController: NavHostController) {
     }
 }
 fun saveUserDataToFirebase(age: String, height: String, weight: String, imc: Double?, imcClassification: String) {
-    val userId = "obtener_de_algún_lugar" // Asegúrate de tener un ID de usuario
+    val userId = "obtener_de_algún_lugar"
     val userMap = mutableMapOf(
         "age" to age,
         "height" to height,
@@ -156,7 +156,7 @@ fun saveUserDataToFirebase(age: String, height: String, weight: String, imc: Dou
 
 @Composable
 fun GenderSelection(gender: String, onGenderSelected: (String) -> Unit) {
-    // Implementación del selector de género (debes agregar la lógica interna)
+
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -200,6 +200,6 @@ fun CustomOutlinedTextField(
 @Preview(showBackground = true)
 @Composable
 fun FormPlanScreenPreview() {
-    val navController = rememberNavController() // Crea un NavController dummy
-    FormPlanScreen(navController) // Pasa el NavController dummy
+    val navController = rememberNavController()
+    FormPlanScreen(navController)
 }

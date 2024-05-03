@@ -63,25 +63,25 @@ fun SplashScreen(navController: NavController) {
                 .size(330.dp)
                 .scale(scale.value),
             shape = CircleShape,
-            color = Color.Transparent, // Fondo transparente del círculo
-            border = BorderStroke(width = 2.dp, color = Color.Gray) // Borde gris
+            color = Color.Transparent,
+            border = BorderStroke(width = 2.dp, color = Color.Gray)
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_splashscreen), // Asegúrate de que el nombre del recurso es correcto
+                painter = painterResource(id = R.drawable.ic_splashscreen),
                 contentDescription = "App Icon",
                 modifier = Modifier
-                    .matchParentSize() // Ajusta la imagen para llenar el círculo
-                    .clip(CircleShape) // Asegura que la imagen se recorte en forma circular
+                    .matchParentSize()
+                    .clip(CircleShape)
             )
         }
-        // Texto curvado simulado
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .align(Alignment.Center)
                 .padding(15.dp)
         ) {
-            Spacer(modifier = Modifier.size(35.dp)) // Ajuste el espacio para posicionar el texto
+            Spacer(modifier = Modifier.size(35.dp))
             Text(
                 "NutriFit",
                 style = MaterialTheme.typography.h2.copy(
@@ -93,16 +93,7 @@ fun SplashScreen(navController: NavController) {
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.size(10.dp))
-//            Text(
-//                "Nutrifit",
-//                style = MaterialTheme.typography.h3.copy(
-//                    fontSize = 24.sp,
-//                    fontWeight = FontWeight.ExtraBold,
-//                    color = Color.Green
-//                ),
-//                modifier = Modifier.padding(horizontal = 24.dp),
-//                textAlign = TextAlign.Center
-//            )
+
         }
     }
 }

@@ -13,7 +13,6 @@ fun TestScreen(plan: Plan, dataViewModel: DataViewModel) {
     Column {
         plan.schedule.forEach { (day, meal) ->
             Column {
-                // Fondo amarillo con esquinas redondeadas para el día de la semana
                 Text(text = day)
                 meal.forEach { (meal, recipe) ->
                     Column {

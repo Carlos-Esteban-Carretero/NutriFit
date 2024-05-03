@@ -18,7 +18,6 @@ import com.example.nutrifit.ui.screens.TipsScreen
 import com.example.nutrifit.ui.screens.dayMealPlans
 import com.example.nutrifit.ui.screens.previewTips
 import com.example.nutrifit.ui.views.DataViewModel
-import kotlinx.coroutines.runBlocking
 
 @Composable
 fun NavigationGraph(navHostController: NavHostController, dataViewModel: DataViewModel) {

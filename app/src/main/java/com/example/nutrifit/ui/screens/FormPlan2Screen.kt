@@ -98,8 +98,8 @@ fun FormPlan2Screen() {
                     textColor = MaterialTheme.colors.onSurface,
                     disabledTextColor = Color.Transparent,
                     cursorColor = MaterialTheme.colors.onSurface,
-                    focusedIndicatorColor = Color.Transparent, // Para remover la línea inferior cuando está enfocado
-                    unfocusedIndicatorColor = Color.Transparent // Para remover la línea inferior cuando no está enfocado
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -183,7 +183,7 @@ fun FormPlan2Screen() {
                     ) {
                         Text(
                             text = diet,
-                            fontWeight = FontWeight.ExtraBold, // Texto en extrabold
+                            fontWeight = FontWeight.ExtraBold,
                             color = MaterialTheme.colors.onSurface)
                     }
                 }
@@ -221,21 +221,21 @@ fun FormPlan2Screen() {
         Button(
             onClick = { /* TODO: Acción que se realizará al pulsar el botón */ },
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Red // Fondo rojo para el botón
+                containerColor = Color.Red
             ),
 
 
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 55.dp)
-                .height(60.dp) // Altura del botón
+                .height(60.dp)
         ) {
             Text(
                 text = "¿Estás listo?\nComencemos",
                 fontSize = 19.sp,
                 fontWeight = FontWeight.ExtraBold,
-                color = Color.White, // Texto en blanco
-                textAlign = TextAlign.Center // Texto centrado
+                color = Color.White,
+                textAlign = TextAlign.Center
             )
         }
 

@@ -41,7 +41,7 @@ fun WeightEntry(paddingValues: PaddingValues) {
             label = { Text("Peso actual") },
             trailingIcon = {
                 Icon(
-                    imageVector = Icons.Filled.Home, // Reemplaza con el ícono de balanza
+                    imageVector = Icons.Filled.Home,
                     contentDescription = "Peso actual"
                 )
             },

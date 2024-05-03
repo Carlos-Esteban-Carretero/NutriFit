@@ -87,7 +87,7 @@ val dayMealPlans = daysOfWeek.map { day ->
 @Composable
 fun PlanScreen(dayMealPlans: List<DayMealPlan>) {
     LazyColumn(
-        modifier = Modifier.background(Color.Black) // Sets the background color to black for the LazyColumn
+        modifier = Modifier.background(Color.Black)
     ) {
         items(dayMealPlans) { dayMealPlan ->
             DayMealPlanCard(dayMealPlan)
@@ -109,7 +109,7 @@ fun DayMealPlanCard(dayMealPlan: DayMealPlan) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color(0xFFFFEB3B), RoundedCornerShape(10.dp)) // Fondo amarillo
+                    .background(Color(0xFFFFEB3B), RoundedCornerShape(10.dp))
                     .padding(vertical = 10.dp)
             ) {
                 Text(
@@ -157,12 +157,12 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontSize = 30.sp,
                                fontWeight = FontWeight.ExtraBold,
-                                color = textColor // Usa el color personalizado para el texto
+                                color = textColor
                             ),
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .size(60.dp)
-                                .wrapContentHeight(align = Alignment.CenterVertically)// Añade espacio debajo del título
+                                .wrapContentHeight(align = Alignment.CenterVertically)
                         )
 
                     }
@@ -170,7 +170,6 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                     Text(
                         textAlign = TextAlign.Center,
                         text = "${meal.name}",
-                        // El tipo de comida, como "Desayuno:"
                         style = MaterialTheme.typography.titleMedium.copy(
                             fontSize = 26.sp,
                             fontWeight = FontWeight.ExtraBold,
@@ -180,7 +179,7 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                         modifier = Modifier
                             .fillMaxWidth()
                             .size(60.dp)
-                            .wrapContentHeight(align = Alignment.CenterVertically)// Añade espacio debajo del título
+                            .wrapContentHeight(align = Alignment.CenterVertically)
                     )
                 }
             }
@@ -190,17 +189,17 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                 fontSize = 20.sp,
                fontWeight = FontWeight.ExtraBold,
                 style = MaterialTheme.typography.bodyLarge,
-                color = Color.White // Asegúrate de que el texto sea visible en el fondo negro
+                color = Color.White
 
             )
-            Spacer(Modifier.height(8.dp)) // Espacio adicional antes de los macros
+            Spacer(Modifier.height(8.dp))
             Text(
                 text = "Calorías: ${meal.calories} kcal",
                 fontSize = 20.sp,
-                fontWeight = FontWeight.Bold, // Hace que el texto sea negrita
+                fontWeight = FontWeight.Bold,
                 color = Color.Yellow
             )
-            Spacer(Modifier.height(4.dp)) // Espacio entre las líneas de texto
+            Spacer(Modifier.height(4.dp))
             Text(
                 text = "Proteínas: ${meal.protein}g",
                 fontSize = 20.sp,
@@ -221,14 +220,14 @@ fun MealCard(mealType: String, meal: Meal, iconId: Int) {
                 fontWeight = FontWeight.Bold,
                 color = Color.Cyan,
             )
-            Spacer(Modifier.height(16.dp)) // Espacio adicional antes de la imagen
+            Spacer(Modifier.height(16.dp))
             Image(
                 painter = painterResource(id = R.drawable.tortilladepatatas),
                 contentDescription = "Imagen de ${meal.name}",
                 modifier = Modifier
-                    .fillMaxWidth() // Ocupa el ancho máximo disponible
-                    .aspectRatio(4f / 4f) // Mantiene la relación de aspecto
-                    .padding(top = 8.dp) // Espacio adicional en la parte superior de la imagen
+                    .fillMaxWidth()
+                    .aspectRatio(4f / 4f)
+                    .padding(top = 8.dp)
             )
         }
     }

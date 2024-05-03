@@ -64,9 +64,9 @@ class AuthViewModel : ViewModel() {
         ).toMap()
 
         FirebaseFirestore.getInstance().collection("users").add(user).addOnSuccessListener {
-            Log.d("MascotaFeliz", "Creado ${it.id}")
+            Log.d("Nutrifit", "Creado ${it.id}")
         }.addOnFailureListener {
-            Log.d("MascotaFeliz", "Ocurrio error ${it}")
+            Log.d("Nutrifit", "Ocurrio error ${it}")
         }
     }
 }

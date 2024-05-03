@@ -67,7 +67,7 @@ fun TipsScreen(tips: List<String>) {
         ) { page ->
             Card(
                 modifier = Modifier
-                    .graphicsLayer {  // Aplica la transformación de escala
+                    .graphicsLayer {
                         scaleX = scale.value
                         scaleY = scale.value
                     }

@@ -42,7 +42,7 @@ fun SplashScreen(navController: NavController) {
     LaunchedEffect(key1 = true) {
         scale.animateTo(
             targetValue = 1.0f,
-            animationSpec = tween(durationMillis = 1700, easing = { OvershootInterpolator(8f).getInterpolation(it) })
+            animationSpec = tween(durationMillis = 1000, easing = { OvershootInterpolator(8f).getInterpolation(it) })
         )
         delay(4000L)
         if (FirebaseAuth.getInstance().currentUser?.email.isNullOrEmpty()) {

@@ -16,8 +16,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.nutrifit.R
 
 @Composable
@@ -43,7 +45,7 @@ fun GenderSelection(selectedGender: String, onGenderSelected: (String) -> Unit) 
 
 @Composable
 fun GenderButton(gender: String, iconRes: Int, selectedGender: String, onGenderSelected: (String) -> Unit, isSelected: Boolean) {
-    val backgroundColor = if (isSelected) Color(0xFF6200EE) else Color.LightGray
+    val backgroundColor = if (isSelected) Color(0xFF3F51B5) else Color.Magenta
     Button(
         onClick = { onGenderSelected(gender) },
         colors = ButtonDefaults.buttonColors(
@@ -55,12 +57,14 @@ fun GenderButton(gender: String, iconRes: Int, selectedGender: String, onGenderS
         Image(
             painter = painterResource(id = iconRes),
             contentDescription = "Ícono de $gender",
-            modifier = Modifier.size(50.dp), // Ajuste del tamaño del ícono
+            modifier = Modifier.size(40.dp), // Ajuste del tamaño del ícono
             contentScale = ContentScale.Fit
         )
-        Spacer(Modifier.width(15.dp))
+        Spacer(Modifier.width(3.dp))
         Text(
             text = gender,
+            fontSize = 15.sp,
+            fontWeight = FontWeight.ExtraBold,
             color = Color.Black // Texto en color negro
         )
     }

@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">NutriFit</string>
     <string name="intolerancia_alimentos">¿Tienes intolerancia a algún alimento?</string>
-    <string name="selecciona_dieta">Selecciona la dieta que deseas:</string>
+    <string name="select_diet">Selecciona la dieta que deseas:</string>
+    <string name="activity_level_question">¿Cuál es tu nivel de actividad física?</string>
     <string name="pregunta_intolerancia">Sí</string>
     <string name="instrucciones_intolerancia">Si no eres intolerante a nada no tienes que rellenar este campo. En caso de que sí, cuéntanos y te mandaremos una dieta personalizada para ti:</string>
 </resources>

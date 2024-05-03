@@ -2,9 +2,9 @@ package com.example.nutrifit.ui.components
 
 import android.annotation.SuppressLint
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.BugReport
 import androidx.compose.material.icons.rounded.Kitchen
 import androidx.compose.material.icons.rounded.LightbulbCircle
-import androidx.compose.material.icons.rounded.Message
 import androidx.compose.material.icons.rounded.Person
 import androidx.compose.material.icons.rounded.SportsScore
 import androidx.compose.material3.Badge
@@ -27,9 +27,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.nutrifit.ui.navigation.NavigationScreen
 
 @Composable
-fun MainBottomBar(
-    navHostController: NavHostController
-) {
+fun MainBottomBar(navHostController: NavHostController) {
     var selectedButton by remember { mutableIntStateOf(0) }
     val buttons = getNavigationButtons()
 
@@ -58,8 +56,7 @@ fun MainBottomBar(
                             tint = if (index == selectedButton) MaterialTheme.colorScheme.onSurface else MaterialTheme.colorScheme.onSurfaceVariant
                         )
                     }
-                }
-            )
+                })
         }
     }
 }
@@ -87,7 +84,7 @@ fun getNavigationButtons(): List<NavigationButton> {
         NavigationButton(
             title = "Plan",
             icon = Icons.Rounded.SportsScore,
-            screen = NavigationScreen.PlanScreen.route,
+            screen = NavigationScreen.FormPlanScreen.route,
             hasNews = false
         ), NavigationButton(
             title = "Recipes",
@@ -97,12 +94,17 @@ fun getNavigationButtons(): List<NavigationButton> {
         ), NavigationButton(
             title = "Tips",
             icon = Icons.Rounded.LightbulbCircle,
-            screen = NavigationScreen.PlanScreen.route,
+            screen = NavigationScreen.TipsScreen.route,
             hasNews = true,
             badgeCount = 2
         ), NavigationButton(
             title = "Profile",
             icon = Icons.Rounded.Person,
+            screen = NavigationScreen.ProfileScreen.route,
+            hasNews = false
+        ), NavigationButton(
+            title = "Test",
+            icon = Icons.Rounded.BugReport,
             screen = NavigationScreen.PlanScreen.route,
             hasNews = false
         )

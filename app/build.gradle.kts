@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -40,7 +41,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.12"
     }
     packaging {
         resources {
@@ -50,7 +51,7 @@ android {
 }
 
 dependencies {
-
+    // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -60,7 +61,9 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.material)
-    // implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.core.splashscreen)
+
+    // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,12 +71,31 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation ("androidx.compose.ui:ui:1.6.5") // Asegúrate de que la versión es la que soporta fillMaxSize
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+
+    // Image
+    implementation(libs.coil.compose)
 
     // Icons
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation ("androidx.compose.material:material-icons-core")
-    }
+    //noinspection UseTomlInstead
+    implementation("androidx.compose.material:material-icons-core")
+    //noinspection UseTomlInstead
+    implementation ("androidx.compose.material:material-icons-extended:1.6.6")
 
+    // Pager
+    implementation(libs.accompanist.pager)
+    implementation(libs.accompanist.pager.indicators)
 
+    // Firebase
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.storage)
+    implementation(libs.firebase.firestore)
+
+    // ViewModel
+    implementation (libs.androidx.lifecycle.viewmodel.ktx)
+    implementation (libs.androidx.lifecycle.livedata.ktx)
+    implementation (libs.kotlinx.coroutines.android)
+
+}
